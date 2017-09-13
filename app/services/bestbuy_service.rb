@@ -23,9 +23,5 @@ class BestbuyService
   def parse(response)
     JSON.parse(response.body, symbolize_names: true)
   end
-
-  #@conn = Faraday.get("https://api.bestbuy.com/v1/stores(area(#{@zipcode},25))?format=json&show=longName,city,distance,phone,storeType&pageSize=2&apiKey=#{ENV['API_KEY']}")
-  #@quantity = JSON.parse(@conn.body, symbolize_names: true)[:total]
-  #@response = JSON.parse(@conn.body, symbolize_names: true)[:stores]
 end
 
