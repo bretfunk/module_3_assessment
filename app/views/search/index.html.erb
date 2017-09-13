@@ -1,6 +1,6 @@
-<h1>Within 25 Miles of <%= @zipcode %> are <%= @quantity %> Total Stores</h1>
+<h1>Within 25 Miles of <%= @zipcode %> are ## Total Stores</h1>
     <% @locations.each do |location| %>
-      <ul class="location">
+      <ul class="store">
         <li class="long_name"><%= location.long_name %></li>
         <li class="city"><%= location.city %></li>
         <li class="distance"><%= location.distance %></li>
