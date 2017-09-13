@@ -15,6 +15,7 @@ gem 'rspec-rails'
 gem 'faraday'
 gem 'figaro'
 gem 'byebug'
+gem 'active_model_serializers'
 
 
 group :test do
