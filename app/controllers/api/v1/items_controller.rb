@@ -1,25 +1,21 @@
 class Api::V1::ItemsController < ApplicationController
   protect_from_forgery with: :null_session
-  before_action :set_item, only: [:show, :item, :destroy]
+  before_action :set_item, only: [:show, :destroy]
 
   def index
-    render json: Item.all
+    render json: Item.all, status: 200
   end
 
   def show
-    render json: @item
+    render json: @item, status: 200
   end
 
   def create
-    render json: Item.create(item_params)
-  end
-
-  def update
-    render json: @item.update(item_params)
+    render json: Item.create(item_params), status: 201
   end
 
   def destroy
-    render json: @item.destroy
+    render json: @item.destroy, status: 204
   end
 
   private
@@ -29,6 +25,6 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :image_url)
+    params.permit(:name, :description, :image_url)
   end
 end
