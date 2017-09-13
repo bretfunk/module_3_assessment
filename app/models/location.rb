@@ -7,4 +7,10 @@ class Location
     @phone = attrs[:phone]
     @type = attrs[:storeType]
   end
+
+  def self.for_user(zipcode)
+    BestbuyService.locations(zipcode).map do |raw_location|
+      Location.new(raw_location)
+    end
+  end
 end
