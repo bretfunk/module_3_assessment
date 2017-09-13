@@ -10,9 +10,6 @@ describe "Best Buy Service" do
     expect(response['stores'].first).to have_key('distance')
     expect(response['stores'].first).to have_key('phone')
     expect(response['stores'].first).to have_key('storeType')
-
-
-
   end
 end
 
