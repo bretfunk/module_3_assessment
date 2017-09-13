@@ -21,6 +21,23 @@ describe "Items API" do
     get "/api/v1/items"
     expect(response).to be_success
     items = JSON.parse(response.body)
+    item = items.first
     expect(items.count).to eq(3)
+    expect(item['id']).to eq(1)
+    expect(item['name']).to eq("MyName")
+    expect(item['description']).to eq("MyDescription")
+    expect(item['image_url']).to eq("www.google.com")
   end
+
+  it "returns one item" do
+    item = create(:item)
+    get "/api/v1/items/#{item.id}"
+    expect(response).to be_success
+    result = JSON.parse(response.body)
+    expect(result['id']).to eq(1)
+    expect(result['name']).to eq("MyName")
+    expect(result['description']).to eq("MyDescription")
+    expect(result['image_url']).to eq("www.google.com")
+  end
+
 end
