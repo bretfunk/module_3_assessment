@@ -57,4 +57,35 @@ describe "Items API" do
     expect(items.count).to eq(4)
   end
 
+  it "updates an item" do
+    item = create(:item)
+    item_params = {name: "tourniquet", description: "best item ever", image_url: "www.google.com"}
+    put "/api/v1/items/#{item.id}", params: {item: item_params}
+    expect(response).to be_success
+
+    get "/api/v1/items/#{item.id}"
+    expect(response).to be_success
+    result = JSON.parse(response.body)
+    expect(result['name']).to eq(item_params[:name])
+
+  end
+
+  it "deletes an item" do
+    item = create(:item)
+    create_list(:item, 3)
+
+    get "/api/v1/items"
+    expect(response).to be_success
+    items = JSON.parse(response.body)
+    expect(items.count).to eq(4)
+
+    delete "/api/v1/items/#{item.id}"
+    expect(response).to be_success
+
+    get "/api/v1/items"
+    expect(response).to be_success
+    items = JSON.parse(response.body)
+    expect(items.count).to eq(3)
+  end
+
 end

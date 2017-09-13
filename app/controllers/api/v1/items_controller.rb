@@ -1,6 +1,6 @@
 class Api::V1::ItemsController < ApplicationController
   protect_from_forgery with: :null_session
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :item, :destroy]
 
   def index
     render json: Item.all
@@ -12,6 +12,14 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     render json: Item.create(item_params)
+  end
+
+  def update
+    render json: @item.update(item_params)
+  end
+
+  def destroy
+    render json: @item.destroy
   end
 
   private
