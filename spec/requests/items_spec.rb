@@ -40,4 +40,21 @@ describe "Items API" do
     expect(result['image_url']).to eq("www.google.com")
   end
 
+  it "creates a new item" do
+    create_list(:item, 3)
+    get "/api/v1/items"
+    expect(response).to be_success
+    items = JSON.parse(response.body)
+    expect(items.count).to eq(3)
+
+    item_params = {name: "tourniquet", description: "best item ever", image_url: "www.google.com"}
+    post "/api/v1/items", params: {item: item_params}
+    expect(response).to be_success
+
+    get "/api/v1/items"
+    expect(response).to be_success
+    items = JSON.parse(response.body)
+    expect(items.count).to eq(4)
+  end
+
 end

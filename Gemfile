@@ -14,6 +14,7 @@ gem "less-rails-bootstrap"
 gem 'rspec-rails'
 gem 'faraday'
 gem 'figaro'
+gem 'byebug'
 
 
 group :test do
