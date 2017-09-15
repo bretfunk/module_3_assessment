@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @zipcode = params[:zipcode]
-    @locations = Location.for_user(@zipcode)
+    @presenter = Presenter.new(params[:zipcode])
   end
 end

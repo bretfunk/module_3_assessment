@@ -13,7 +13,7 @@ class BestbuyService
   end
 
   def locations
-    get_url("/v1/stores(area(#{zipcode},25))?format=json&show=longName,city,distance,phone,storeType&pageSize=10&apiKey=#{ENV['API_KEY']}")[:stores]
+    get_url("/v1/stores(area(#{zipcode},25))?format=json&show=longName,city,distance,phone,storeType&pageSize=10&apiKey=#{ENV['API_KEY']}")
   end
 
   def get_url(url)

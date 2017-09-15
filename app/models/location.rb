@@ -8,8 +8,12 @@ class Location
     @type = attrs[:storeType]
   end
 
+  def self.quantity(zipcode)
+    BestbuyService.locations(zipcode)[:total]
+  end
+
   def self.for_user(zipcode)
-    BestbuyService.locations(zipcode).map do |raw_location|
+    BestbuyService.locations(zipcode)[:stores].map do |raw_location|
       Location.new(raw_location)
     end
   end

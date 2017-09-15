@@ -50,14 +50,14 @@ describe "Items API" do
     create_list(:item, 3)
     get "/api/v1/items"
     expect(response).to be_success
-    #expect(response).to have_http_status(201)
-    #response is 200
+    expect(response).to have_http_status(200)
     items = JSON.parse(response.body)
     expect(items.count).to eq(3)
 
     item_params = {name: "tourniquet", description: "best item ever", image_url: "www.google.com"}
     post "/api/v1/items", params: {item: item_params}
     expect(response).to be_success
+    expect(response).to have_http_status(201)
     result = JSON.parse(response.body)
     expect(result['name']).to eq(item_params[:name])
     expect(result['description']).to eq(item_params[:description])
