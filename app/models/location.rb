@@ -12,7 +12,7 @@ class Location
     BestbuyService.locations(zipcode)[:total]
   end
 
-  def self.for_user(zipcode)
+  def self.locations(zipcode)
     BestbuyService.locations(zipcode)[:stores].map do |raw_location|
       Location.new(raw_location)
     end

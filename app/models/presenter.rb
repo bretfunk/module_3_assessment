@@ -9,6 +9,6 @@ end
   end
 
   def locations
-    Location.for_user(zipcode)
+    Location.locations(zipcode)
   end
 end
